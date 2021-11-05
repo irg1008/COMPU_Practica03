@@ -32,15 +32,15 @@ def evalEcuacion(toolbox, individual):
 
 #%% Funcion que permite dibujar el individuo pasado por parametro
 # como un arbol (en lugar de una expresión lineal)
-#def plotExpressionTree(toolbox, individual):
-#    
+# def plotExpressionTree(toolbox, individual):
+   
 #    nodes, edges, labels = gp.graph(individual)
-#
+
 #    g = nx.Graph()
 #    g.add_nodes_from(nodes)
 #    g.add_edges_from(edges)
 #    pos = graphviz_layout(g, prog="dot")
-#
+
 #    nx.draw_networkx_nodes(g, pos)
 #    nx.draw_networkx_edges(g, pos)
 #    nx.draw_networkx_labels(g, pos, labels)

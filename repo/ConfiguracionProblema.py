@@ -143,5 +143,5 @@ def pruebaPoblacion():
 
 
 if __name__ == "__main__":
-    # pruebaIndividuo()
-    pruebaPoblacion()
+    pruebaIndividuo()
+    # pruebaPoblacion()
