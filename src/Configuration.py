@@ -2,7 +2,7 @@ from deap import creator, base, tools, gp
 import math
 import operator
 import random
-from Evaluation import eval_ind
+from Evaluation import eval_ind, eval_ind_confussion
 
 
 def protectedDiv(left, right):
@@ -21,11 +21,6 @@ def config_individual():
     pset.addPrimitive(operator.neg, 1)
     pset.addPrimitive(math.cos, 1)
     pset.addPrimitive(math.sin, 1)
-
-    """
-    A constant (random) value to include in the tree is added: it allows to include in the functions other operands.
-    """
-    # pset.addEphemeralConstant("rand101", lambda: random.randint(-1, 1))  # ??
 
     pset.renameArguments(ARG0="RI", ARG1="Na", ARG2="Mg",
                          ARG3="Al", ARG4="Si", ARG5="K",
@@ -66,6 +61,6 @@ def config_algorithm(inputs, targets, toolbox, pset):
         key=operator.attrgetter("height"), max_value=17))
 
     def eval_func(toolbox, individual):
-        return eval_ind(inputs, targets, toolbox, individual)
+        return eval_ind_confussion(inputs, targets, toolbox, individual)
 
     toolbox.register("evaluate", eval_func, toolbox)
