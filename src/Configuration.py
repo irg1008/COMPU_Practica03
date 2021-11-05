@@ -25,7 +25,7 @@ def config_individual():
     """
     A constant (random) value to include in the tree is added: it allows to include in the functions other operands.
     """
-    pset.addEphemeralConstant("rand101", lambda: random.randint(-1, 1))  # ??
+    # pset.addEphemeralConstant("rand101", lambda: random.randint(-1, 1))  # ??
 
     pset.renameArguments(ARG0="RI", ARG1="Na", ARG2="Mg",
                          ARG3="Al", ARG4="Si", ARG5="K",
