@@ -11,5 +11,7 @@ def eval_ind(inputs, targets, toolbox, individual):
 
         if guess == is_window:
             correct_guesses += 1
+            
+    # TODO: Change this for a confussion matrix and a f_score
 
     return correct_guesses/total_guesses,
