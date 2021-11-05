@@ -10,7 +10,7 @@ def main():
     inputs, targets = load_data()
     _, best = make_evolution(inputs, targets,
                              toolbox, plot_stats=True,
-                             CXPB=0.5, MUTPB=0.1, NGEN=300, NIND=400)
+                             CXPB=0.5, MUTPB=0.1, NGEN=50, NIND=400)
     test_data(inputs, targets, best, toolbox)
 
 
