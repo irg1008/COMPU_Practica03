@@ -8,6 +8,7 @@ Para obtener una función que use todos los parámetros deberíamos tener más t
 En nuestro caso los tipos pueden ser los siguientes:
 
 Type of glass: (class attribute)
+
 - 1 buildingwindowsfloatprocessed
 - 2 buildingwindowsnonfloatprocessed
 - 3 vehiclewindowsfloatprocessed
@@ -15,3 +16,11 @@ Type of glass: (class attribute)
 - 5 containers
 - 6 tableware
 - 7 headlamps
+
+// TODO:
+
+- Guardar resultados
+- Hacer árbol
+
+## BIBLIOGRAFÍA:
+[Multiclass confussion matrix](https://towardsdatascience.com/confusion-matrix-for-your-multi-class-machine-learning-model-ff9aa3bf7826)

@@ -7,10 +7,12 @@ from deap import base
 def main():
     toolbox = base.Toolbox()
 
-    inputs, targets = load_data()
+    inputs, targets, multiple_targets = load_data()
+    
     _, best = make_evolution(inputs, targets,
                              toolbox, plot_stats=True,
-                             CXPB=0.5, MUTPB=0.1, NGEN=50, NIND=400)
+                             CXPB=0.5, MUTPB=0.8, NGEN=30, NIND=50)
+    
     test_data(inputs, targets, best, toolbox)
 
 

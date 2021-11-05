@@ -61,6 +61,6 @@ def config_algorithm(inputs, targets, toolbox, pset):
         key=operator.attrgetter("height"), max_value=17))
 
     def eval_func(toolbox, individual):
-        return eval_ind_confussion(inputs, targets, toolbox, individual)
+        return eval_ind(inputs, targets, toolbox, individual)
 
     toolbox.register("evaluate", eval_func, toolbox)

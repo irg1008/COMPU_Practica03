@@ -1,8 +1,9 @@
 import pandas as pd
 
-input_folder = "../input/"
+input_folder = "../../input/"
 inputs_csv = "glassInputs.csv"
 targets_csv = "glassTargets.csv"
+multiple_targets_csv = "glassMultipleTargets.csv"
 
 
 def read_data(file_name):
@@ -13,8 +14,10 @@ def read_data(file_name):
 def load_data():
     inputs_data = read_data(input_folder + inputs_csv)
     targets_data = read_data(input_folder + targets_csv)
-    
+    multiple_targets_data = read_data(input_folder + multiple_targets_csv)
+
     list_inputs = inputs_data.values.tolist()[1:]
     list_targets = targets_data.values.tolist()[1:]
-    
-    return list_inputs, list_targets
+    list_multiple_targets = multiple_targets_data.values.tolist()[1:]
+
+    return list_inputs, list_targets, list_multiple_targets
