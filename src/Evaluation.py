@@ -6,7 +6,7 @@ def eval_ind(inputs, targets, toolbox, individual):
     total_guesses = len(inputs)
 
     for input, target in zip(inputs, targets):
-        is_window = target[1]
+        _, is_window = target
         guess = func(*input)
 
         if guess == is_window:
