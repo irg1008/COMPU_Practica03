@@ -1,18 +1,14 @@
-import math
-from Input import fCuarta
 
-
-def eval_ind(toolbox, individual):
-    # Se calcula el error cuadrático medio que comete la función
-    # al evaluarse sobre los diferentes datos
-    # El ECM se calcula como:
-
+def eval_ind(inputs, targets, toolbox, individual):
     func = toolbox.compile(expr=individual)
 
-    entradas, salidas = fCuarta()
+    correct_guesses = 0
+    total_guesses = len(individual)
 
-    sqerrors = []
-    for x, y in zip(entradas, salidas):
-        sqerrors.append((func(x) - y)**2)
+    for input, target in zip(inputs, targets):
+        print(inputs)
+        guess = func(*input)
+        if guess == target:
+            correct_guesses += 1
 
-    return (math.fsum(sqerrors) / len(entradas)),
+    return correct_guesses/total_guesses,

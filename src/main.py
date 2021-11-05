@@ -1,9 +1,10 @@
 from EvolutiveCycle import make_evolution
-from Stats import show_stats
+from Input import load_data
 
 
 def main():
-    make_evolution(plot_stats=True)
+    inputs, targets = load_data()
+    make_evolution(inputs, targets, plot_stats=True)
 
 
 if __name__ == "__main__":

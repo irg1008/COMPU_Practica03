@@ -3,13 +3,13 @@ from Configuration import config_population, config_algorithm
 from Stats import config_stats, show_stats
 
 
-def make_evolution(plot_stats=False):
+def make_evolution(inputs, targets, plot_stats=False):
     toolbox = base.Toolbox()
 
     pset = config_population(toolbox)
     stats = config_stats()
 
-    config_algorithm(toolbox, pset)
+    config_algorithm(inputs, targets, toolbox, pset)
 
     pop = toolbox.population(n=50)
 
@@ -22,7 +22,8 @@ def make_evolution(plot_stats=False):
     best = tools.selBest(pop, 1)[0]
 
     if plot_stats:
-        print("Best individual is %s, %s" % (best, best.fitness.values))
+        print(
+            f"Best individual is {best} with fitness {best.fitness.values[0]}")
         show_stats(logbook)
 
     return logbook, best

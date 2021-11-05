@@ -1,7 +1,7 @@
 from deap import creator, base, tools, gp
 import math
-import random
 import operator
+import random
 from Evaluation import eval_ind
 
 
@@ -11,7 +11,7 @@ def protectedDiv(left, right):
 
 def config_individual():
     # Create primitive set
-    pset = gp.PrimitiveSet("MAIN", 1)
+    pset = gp.PrimitiveSet("MAIN", 9)
 
     # Add all primitives to the primitive set
     pset.addPrimitive(operator.add, 2)
@@ -25,25 +25,22 @@ def config_individual():
     """
     A constant (random) value to include in the tree is added: it allows to include in the functions other operands.
     """
-    pset.addEphemeralConstant("rand101", lambda: random.randint(-1, 1))
+    pset.addEphemeralConstant("rand101", lambda: random.randint(-1, 1))  # ??
 
-    """
-    An argument is added for the function to be evaluated (in our problem there is only one: the 'x' of the function). 
-    That is, given an x, you are asked to calculate the corresponding y.
-    If the function needs more input parameters, they are added here
-    """
-    pset.renameArguments(ARG0="x")
+    pset.renameArguments(ARG0="RI", ARG1="Na", ARG2="Mg",
+                         ARG3="Al", ARG4="Si", ARG5="K",
+                         ARG6="Ca", ARG7="Ba", ARG8="Fe")
 
     return pset
 
 
 def config_population(toolbox):
     # Create fitness and individual.
-    if not hasattr(creator, "FitnessMin"):
-        creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
+    if not hasattr(creator, "FitnessMax"):
+        creator.create("FitnessMax", base.Fitness, weights=(1.0,))
     if not hasattr(creator, "Individual"):
         creator.create("Individual", gp.PrimitiveTree,
-                       fitness=creator.FitnessMin)
+                       fitness=creator.FitnessMax)
 
     pset = config_individual()
 
@@ -57,7 +54,7 @@ def config_population(toolbox):
     return pset
 
 
-def config_algorithm(toolbox, pset):
+def config_algorithm(inputs, targets, toolbox, pset):
     toolbox.register("select", tools.selTournament, tournsize=3)
     toolbox.register("mate", gp.cxOnePoint)
     toolbox.register("expr_mut", gp.genFull, min_=0, max_=2)
@@ -68,4 +65,7 @@ def config_algorithm(toolbox, pset):
     toolbox.decorate("mutate", gp.staticLimit(
         key=operator.attrgetter("height"), max_value=17))
 
-    toolbox.register("evaluate", eval_ind, toolbox)
+    def eval_func(toolbox, individual):
+        return eval_ind(inputs, targets, toolbox, individual)
+
+    toolbox.register("evaluate", eval_func, toolbox)
