@@ -17,9 +17,6 @@ def make_evolution(inputs, targets, toolbox, plot_stats=False, CXPB=0.5, MUTPB=0
 
     best = tools.selBest(pop, 1)[0]
 
-    print(
-        f"Best individual is {best} with fitness {best.fitness.values[0]}")
-
     if plot_stats:
         show_stats(logbook)
 

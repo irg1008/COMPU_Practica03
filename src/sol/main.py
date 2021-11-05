@@ -7,12 +7,17 @@ from deap import base
 def main():
     toolbox = base.Toolbox()
 
+    # To test binary or multi-class change targets for multiple_targets and the other way around.
     inputs, targets, multiple_targets = load_data()
-    
-    _, best = make_evolution(inputs, targets,
-                             toolbox, plot_stats=True,
-                             CXPB=0.5, MUTPB=0.2, NGEN=50, NIND=100)
-    
+
+    logbook, best = make_evolution(inputs, targets,
+                                   toolbox, plot_stats=True,
+                                   CXPB=0.5, MUTPB=0.2, NGEN=40, NIND=50)
+
+    print(logbook)
+    print(
+        f"Best individual is {best} with fitness {best.fitness.values[0]}")
+
     test_data(inputs, targets, best, toolbox)
 
 
