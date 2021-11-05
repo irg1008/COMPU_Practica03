@@ -22,5 +22,8 @@ Type of glass: (class attribute)
 - Guardar resultados
 - Hacer árbol
 
+### LIBRERÍAS USADAS
+Used sklearn for the f_1 score. This allows us to create multi-class confussion matrix and extract the average f-score
+
 ## BIBLIOGRAFÍA:
 [Multiclass confussion matrix](https://towardsdatascience.com/confusion-matrix-for-your-multi-class-machine-learning-model-ff9aa3bf7826)
