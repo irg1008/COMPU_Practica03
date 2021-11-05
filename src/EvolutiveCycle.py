@@ -3,7 +3,7 @@ from Configuration import config_population, config_algorithm
 from Stats import config_stats, show_stats
 
 
-def make_evolution(inputs, targets, plot_stats=False):
+def make_evolution(inputs, targets, CXPB = 0.5, MUTPB = 0.2, NGEN = 30, NPOP = 50, plot_stats=False):
     toolbox = base.Toolbox()
 
     pset = config_population(toolbox)
@@ -11,9 +11,7 @@ def make_evolution(inputs, targets, plot_stats=False):
 
     config_algorithm(inputs, targets, toolbox, pset)
 
-    pop = toolbox.population(n=50)
-
-    CXPB, MUTPB, NGEN = 0.5, 0.2, 30
+    pop = toolbox.population(n = NPOP)
 
     pop, logbook = algorithms.eaSimple(
         pop, toolbox, verbose=False, stats=stats,
