@@ -11,7 +11,7 @@ def main():
     
     _, best = make_evolution(inputs, targets,
                              toolbox, plot_stats=True,
-                             CXPB=0.5, MUTPB=0.8, NGEN=30, NIND=50)
+                             CXPB=0.5, MUTPB=0.2, NGEN=50, NIND=100)
     
     test_data(inputs, targets, best, toolbox)
 
