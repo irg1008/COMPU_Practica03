@@ -26,6 +26,8 @@ def config_individual():
                          ARG3="Al", ARG4="Si", ARG5="K",
                          ARG6="Ca", ARG7="Ba", ARG8="Fe")
 
+    # pset.addEphemeralConstant("rand101", lambda: random.uniform(-1, 1))
+
     return pset
 
 
@@ -40,7 +42,7 @@ def config_population(toolbox):
     pset = config_individual()
 
     # Register expr, individual, population and compile in toolbox
-    toolbox.register("expr", gp.genHalfAndHalf, pset=pset, min_=1, max_=2)
+    toolbox.register("expr", gp.genHalfAndHalf, pset=pset, min_=1, max_=3)
     toolbox.register("individual", tools.initIterate,
                      creator.Individual, toolbox.expr)
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)

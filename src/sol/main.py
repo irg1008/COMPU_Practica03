@@ -8,17 +8,16 @@ def main():
     toolbox = base.Toolbox()
 
     # To test binary or multi-class change targets for multiple_targets and the other way around.
-    inputs, targets, multiple_targets = load_data()
+    inputs, binary_targets, multiple_targets = load_data()
+    
+    targets = multiple_targets
+    targets = binary_targets
 
-    logbook, best = make_evolution(inputs, targets,
-                                   toolbox, plot_stats=True,
-                                   CXPB=0.5, MUTPB=0.2, NGEN=40, NIND=50)
+    _, best = make_evolution(inputs, targets,
+                                   toolbox, plot_stats=True, plot_tree=True, debug=True,
+                                   CXPB=0.6, MUTPB=0.2, NGEN=50, NIND=50)
 
-    print(logbook)
-    print(
-        f"Best individual is {best} with fitness {best.fitness.values[0]}")
-
-    test_data(inputs, targets, best, toolbox)
+    test_data(inputs, targets, best, toolbox, debug=False)
 
 
 if __name__ == "__main__":

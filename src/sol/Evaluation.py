@@ -14,7 +14,7 @@ def eval_ind_confussion(inputs, targets, toolbox, individual):
 
         guesses.append(int(guess))
         test.append(type)
-
+        
     f_score = metrics.f1_score(test, guesses, average="weighted")
 
     return f_score,

@@ -22,8 +22,20 @@ Type of glass: (class attribute)
 - Guardar resultados
 - Hacer árbol
 
+Usar algoritmos genéticos no es lo óptimo en clasificación pero puede ser útil para dar unos pesos iniciales en un algorítmo neuronal.
+
 ### LIBRERÍAS USADAS
 Used sklearn for the f_1 score. This allows us to create multi-class confussion matrix and extract the average f-score
 
 ## BIBLIOGRAFÍA:
 [Multiclass confussion matrix](https://towardsdatascience.com/confusion-matrix-for-your-multi-class-machine-learning-model-ff9aa3bf7826)
+
+[Paper](https://link.springer.com/chapter/10.1007/978-3-662-44303-3_5)
+[Classification techniques](https://www.sciencedirect.com/topics/computer-science/classification-technique)
+
+Requirements:
+- pandas
+- sklearn
+- matplotlib
+- deap
+- pygraphviz
