@@ -5,7 +5,7 @@ import random
 from Evaluation import eval_ind_confussion
 
 
-def protectedDiv(left, right):
+def protDiv(left, right):
     return 1 if right == 0 else left / right
 
 
@@ -17,7 +17,7 @@ def config_individual():
     pset.addPrimitive(operator.add, 2)
     pset.addPrimitive(operator.sub, 2)
     pset.addPrimitive(operator.mul, 2)
-    pset.addPrimitive(protectedDiv, 2)
+    pset.addPrimitive(protDiv, 2)
     pset.addPrimitive(operator.neg, 1)
     pset.addPrimitive(math.cos, 1)
     pset.addPrimitive(math.sin, 1)

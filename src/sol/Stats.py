@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 from deap import tools
 import numpy as np
+import os
+
 
 def config_stats():
     stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -24,5 +26,7 @@ def show_stats(log):
     _ = ax1.plot(gen, mins, "r-", label="Min Fitness")
     ax1.set_xlabel("Generation")
     ax1.set_ylabel("Fitness", color="b")
+
+    plt.savefig(os.path.join(os.getcwd(), "../../output/stats.png"))
 
     plt.show()

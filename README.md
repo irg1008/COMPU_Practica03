@@ -18,9 +18,8 @@ Type of glass: (class attribute)
 - 7 headlamps
 
 // TODO:
-
+- Posible mejora: Crear operadores adicionales
 - Guardar resultados
-- Hacer árbol
 
 Usar algoritmos genéticos no es lo óptimo en clasificación pero puede ser útil para dar unos pesos iniciales en un algorítmo neuronal.
 

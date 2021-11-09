@@ -20,7 +20,7 @@ def make_evolution(inputs, targets, toolbox, plot_stats=False, plot_tree=False, 
     best = tools.selBest(pop, 1)[0]
 
     if debug:
-        print(logbook)
+        # print(logbook)
         print(f"Best individual is {best} with fitness {best.fitness.values[0]}")
 
     if plot_stats:
