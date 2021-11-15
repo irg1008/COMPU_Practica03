@@ -14,6 +14,6 @@ def show_tree(individual):
         n = g.get_node(i)
         n.attr["label"] = labels[i]
 
-    output_path = "../../output/tree.pdf"
+    output_path = "../../output/tree.png"
 
     g.draw(os.path.join(os.getcwd(), output_path))

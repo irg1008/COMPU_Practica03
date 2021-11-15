@@ -1,6 +1,6 @@
 from deap import tools, algorithms
 from Configuration import config_population, config_algorithm
-from Stats import config_stats, show_stats
+from Stats import config_stats, show_fitness_penalty
 from Output import show_tree
 
 
@@ -24,7 +24,7 @@ def make_evolution(inputs, targets, toolbox, plot_stats=False, plot_tree=False, 
         print(f"Best individual is {best} with fitness {best.fitness.values[0]}")
 
     if plot_stats:
-        show_stats(logbook)
+        show_fitness_penalty(logbook)
 
     if plot_tree:
         show_tree(best)

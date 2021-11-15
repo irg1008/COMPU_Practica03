@@ -1,4 +1,5 @@
 from sklearn import metrics
+import random
 
 
 def eval_ind_confussion(inputs, targets, toolbox, individual):
@@ -36,7 +37,10 @@ def eval_ind_simple(inputs, targets, toolbox, individual):
         if not min_limit <= guessed_target <= max_limit:
             # Get distance outside interval between min and max.
             distance = abs(guessed_target - min_limit) + abs(guessed_target - max_limit)
-            penalty += distance
+            # Makes the convergence easier, but mutation takes toll.
+            # Thats why we use a random value.
+            if random.random() < 0.2:
+                penalty += distance
 
     return guessed_equals_target/len(inputs), penalty
 
