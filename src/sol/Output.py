@@ -29,6 +29,15 @@ def plot_conf_matrix(targets, guesses):
     plt.savefig(os.path.join(os.getcwd(), "../../output/conf_mat.png"))
 
     plt.show()
-    
-def plot_pareto():
-    pass
+
+def show_or_save(plot, file_name, title):
+    if not plot and file_name is not None:
+        folder = f"../../Plots/{file_name}"
+
+        exists = os.path.exists(folder)
+        if not exists:
+            os.mkdir(folder)
+
+        plt.savefig(f"{folder}/{title}.png")
+    else:
+        plt.show()
