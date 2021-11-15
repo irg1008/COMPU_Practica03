@@ -63,7 +63,7 @@ def plot_ax(ax, x_label, y_label, _x, y, labels, colors):
     get_nice_legend(ax)
 
 
-def show_fitness_penalty(log, title="Fitness and Penalty"):
+def plot_fitness_penalty(log, title="Fitness and Penalty"):
     fit_label = "Fitness"
     pen_label = "Penalty"
     x_label = "Generations"

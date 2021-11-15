@@ -1,25 +1,40 @@
 ### INSTALL:
 
+---
+
 1. Install pygraphviz on linux machine, WSL, docker or similar: 
 
 ```bash
 sudo apt-get install graphviz graphviz-dev
 ```
 
-Access the website if encountered any problem: [Installation guide](https://pygraphviz.github.io/pygraphviz/installation.html)
+Access the website if encountered any problem: [Installation guide](https://pygraphviz.github.io/documentation/latest/install.html)
 
-2.- Install all python requirements (min python version: 3.6):
+2. Install all python requirements (min. python version: 3.6):
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3.- Execute main or experiments:
+Requirements:
+- pandas (csv loading)
+- sklearn (confussion matrix and other metrics)
+- matplotlib (plotting)
+- deap
+- pygraphviz (generating tress)
+
+
+3. Execute main or experiments:
 
 ```bash
 python main.py
 ```
 
+### ABSTRACT:
+
+---
+
+Usar algoritmos genéticos no es lo óptimo en clasificación pero puede ser útil para dar unos pesos iniciales en un algorítmo neuronal. Podríamos intentarlo pero necesitaríamos muchos datos para entrenarlo.
 
 Al tener solo dos clases, el algoritmo usa pocos datos de entrada.
 Encuentra un dato que permite diferenciar entre ventana y no ventana y lo usa de forma exclusiva en la función.
@@ -41,20 +56,27 @@ Type of glass: (class attribute)
 - 7 headlamps
 
 // TODO:
-
-- Posible mejora: Crear operadores adicionales
 - Guardar resultados
+
+### POSIBLES MEJORAS:
+
+---
+
+- Crear operadores adicionales
 - Cambiar la clasificación a distancia de binarios o algo así. Por eso venía en binarios.
+- Minimizar el árbol y eliminar ramas innecesarias usando Orthogonal least squares (OSL)
 
-Usar algoritmos genéticos no es lo óptimo en clasificación pero puede ser útil para dar unos pesos iniciales en un algorítmo neuronal.
-
-No hemos implementado Orthogonal least squares (OLS), ya que aumenta el tiempo de ejecución y no merece la pena la mejora.
+  No hemos implementado Orthogonal least squares (OLS), ya que aumenta el tiempo de ejecución y no merece la pena la mejora.
 
 ### LIBRERÍAS USADAS
+
+---
 
 Used sklearn for the f_1 score. This allows us to create multi-class confussion matrix and extract the average f-score
 
 ## BIBLIOGRAFÍA:
+
+---
 
 [Multiclass confussion matrix](https://towardsdatascience.com/confusion-matrix-for-your-multi-class-machine-learning-model-ff9aa3bf7826)
 
@@ -62,11 +84,3 @@ Used sklearn for the f_1 score. This allows us to create multi-class confussion 
 [Classification techniques](https://www.sciencedirect.com/topics/computer-science/classification-technique)
 [Glass Composition](https://www.britannica.com/technology/glass)
 [Binary method](https://ieeexplore.ieee.org/document/6597232)
-
-Requirements:
-
-- pandas
-- sklearn
-- matplotlib
-- deap
-- pygraphviz

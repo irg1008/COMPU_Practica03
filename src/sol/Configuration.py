@@ -8,8 +8,10 @@ from Evaluation import eval_ind_confussion, eval_ind_simple
 def protDiv(left, right):
     return 0 if right == 0 else left / right
 
+
 def protSqrt(x):
     return math.sqrt(abs(x))
+
 
 def config_individual():
     # Create primitive set
@@ -35,7 +37,7 @@ def config_individual():
     return pset
 
 
-def config_population(toolbox):
+def config_population(toolbox, max_tree_height):
     # Create fitness and individual.
     if not hasattr(creator, "FitnessMax"):
         creator.create("FitnessMax", base.Fitness, weights=(1.0, -1.0))
@@ -46,7 +48,8 @@ def config_population(toolbox):
     pset = config_individual()
 
     # Register expr, individual, population and compile in toolbox
-    toolbox.register("expr", gp.genHalfAndHalf, pset=pset, min_=1, max_=3)
+    toolbox.register("expr", gp.genHalfAndHalf, pset=pset,
+                     min_=1, max_=max_tree_height)
     toolbox.register("individual", tools.initIterate,
                      creator.Individual, toolbox.expr)
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
@@ -55,10 +58,11 @@ def config_population(toolbox):
     return pset
 
 
-def config_algorithm(inputs, targets, toolbox, pset):
+def config_algorithm(inputs, targets, toolbox, pset, max_subtree_mut_height):
     toolbox.register("select", tools.selTournament, tournsize=3)
     toolbox.register("mate", gp.cxOnePoint)
-    toolbox.register("expr_mut", gp.genFull, min_=0, max_=2)
+    toolbox.register("expr_mut", gp.genFull, min_=0,
+                     max_=max_subtree_mut_height)
     toolbox.register("mutate", gp.mutUniform, expr=toolbox.expr_mut, pset=pset)
 
     toolbox.decorate("mate", gp.staticLimit(
@@ -70,3 +74,8 @@ def config_algorithm(inputs, targets, toolbox, pset):
         return eval_ind_simple(inputs, targets, toolbox, individual)
 
     toolbox.register("evaluate", eval_func, toolbox)
+
+
+def config(inputs, targets, toolbox, max_tree_height=3, max_subtree_mut_height=2):
+    pset = config_population(toolbox, max_tree_height)
+    config_algorithm(inputs, targets, toolbox, pset, max_subtree_mut_height)

@@ -2,7 +2,11 @@ import pygraphviz as pgv
 from deap import gp
 import os
 
-def show_tree(individual):
+from sklearn.metrics import ConfusionMatrixDisplay
+from sklearn import metrics
+import matplotlib.pyplot as plt
+
+def save_generated_tree(individual):
     nodes, edges, labels = gp.graph(individual)
 
     g = pgv.AGraph()
@@ -17,3 +21,11 @@ def show_tree(individual):
     output_path = "../../output/tree.png"
 
     g.draw(os.path.join(os.getcwd(), output_path))
+    
+def plot_conf_matrix(targets, guesses):
+    cm = metrics.confusion_matrix(targets, guesses)
+    ConfusionMatrixDisplay(cm).plot()
+
+    plt.savefig(os.path.join(os.getcwd(), "../../output/conf_mat.png"))
+
+    plt.show()
