@@ -18,6 +18,7 @@ def load_data():
 
     list_inputs = inputs_data.values.tolist()[1:]
     list_targets = targets_data.values.tolist()[1:]
+    types_targets = [target[0] for target in list_targets]
     list_multiple_targets = multiple_targets_data.values.tolist()[1:]
 
-    return list_inputs, list_targets, list_multiple_targets
+    return list_inputs, types_targets, list_multiple_targets

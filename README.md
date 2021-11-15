@@ -20,8 +20,11 @@ Type of glass: (class attribute)
 // TODO:
 - Posible mejora: Crear operadores adicionales
 - Guardar resultados
+- Cambiar la clasificación a distancia de binarios o algo así. Por eso venía en binarios.
 
 Usar algoritmos genéticos no es lo óptimo en clasificación pero puede ser útil para dar unos pesos iniciales en un algorítmo neuronal.
+
+No hemos implementado Orthogonal least squares (OLS), ya que aumenta el tiempo de ejecución y no merece la pena la mejora.
 
 ### LIBRERÍAS USADAS
 Used sklearn for the f_1 score. This allows us to create multi-class confussion matrix and extract the average f-score
@@ -31,6 +34,8 @@ Used sklearn for the f_1 score. This allows us to create multi-class confussion 
 
 [Paper](https://link.springer.com/chapter/10.1007/978-3-662-44303-3_5)
 [Classification techniques](https://www.sciencedirect.com/topics/computer-science/classification-technique)
+
+[Binary method](https://ieeexplore.ieee.org/document/6597232)
 
 Requirements:
 - pandas

@@ -2,12 +2,14 @@ from deap import creator, base, tools, gp
 import math
 import operator
 import random
-from Evaluation import eval_ind_confussion
+from Evaluation import eval_ind_confussion, eval_ind_simple
 
 
 def protDiv(left, right):
     return 1 if right == 0 else left / right
 
+def protSqrt(x):
+    return math.sqrt(abs(x))
 
 def config_individual():
     # Create primitive set
@@ -19,6 +21,8 @@ def config_individual():
     pset.addPrimitive(operator.mul, 2)
     pset.addPrimitive(protDiv, 2)
     pset.addPrimitive(operator.neg, 1)
+    pset.addPrimitive(operator.abs, 1)
+    #pset.addPrimitive(protSqrt, 1)
     pset.addPrimitive(math.cos, 1)
     pset.addPrimitive(math.sin, 1)
 
@@ -26,7 +30,7 @@ def config_individual():
                          ARG3="Al", ARG4="Si", ARG5="K",
                          ARG6="Ca", ARG7="Ba", ARG8="Fe")
 
-    # pset.addEphemeralConstant("rand101", lambda: random.uniform(-1, 1))
+    #pset.addEphemeralConstant("rand101", lambda: random.uniform(0, 1))
 
     return pset
 
@@ -34,7 +38,7 @@ def config_individual():
 def config_population(toolbox):
     # Create fitness and individual.
     if not hasattr(creator, "FitnessMax"):
-        creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+        creator.create("FitnessMax", base.Fitness, weights=(1.0, -1.0))
     if not hasattr(creator, "Individual"):
         creator.create("Individual", gp.PrimitiveTree,
                        fitness=creator.FitnessMax)
@@ -63,6 +67,6 @@ def config_algorithm(inputs, targets, toolbox, pset):
         key=operator.attrgetter("height"), max_value=17))
 
     def eval_func(toolbox, individual):
-        return eval_ind_confussion(inputs, targets, toolbox, individual)
+        return eval_ind_simple(inputs, targets, toolbox, individual)
 
     toolbox.register("evaluate", eval_func, toolbox)
