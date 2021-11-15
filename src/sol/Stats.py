@@ -21,25 +21,6 @@ def config_stats():
     return stats
 
 
-# def show_stats(log):
-#     gen = log.select("gen")
-#     avgs = log.select("avg")
-#     mins = log.select("min")
-#     maxs = log.select("max")
-
-#     _, ax1 = plt.subplots()
-
-#     _ = ax1.plot(gen, avgs, "b-", label="Average Fitness")
-#     _ = ax1.plot(gen, maxs, "g-", label="Max Fitness")
-#     _ = ax1.plot(gen, mins, "r-", label="Min Fitness")
-#     ax1.set_xlabel("Generation")
-#     ax1.set_ylabel("Fitness", color="b")
-
-#     plt.savefig(os.path.join(os.getcwd(), "../../output/stats.png"))
-
-#     plt.show()
-
-
 def get_nice_legend(ax):
     legend = ax.legend(loc="best", shadow=True, edgecolor="black",
                        borderpad=1, labelspacing=0.8, facecolor="whitesmoke")

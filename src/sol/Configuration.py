@@ -2,7 +2,7 @@ from deap import creator, base, tools, gp
 import math
 import operator
 import random
-from Evaluation import eval_ind_confussion, eval_ind_simple
+from Evaluation import eval_ind_simple
 
 
 def protDiv(left, right):
@@ -37,7 +37,7 @@ def config_individual():
     return pset
 
 
-def config_population(toolbox, max_tree_height):
+def config_population(toolbox, max_subtree_height):
     # Create fitness and individual.
     if not hasattr(creator, "FitnessMax"):
         creator.create("FitnessMax", base.Fitness, weights=(1.0, -1.0))
@@ -49,7 +49,7 @@ def config_population(toolbox, max_tree_height):
 
     # Register expr, individual, population and compile in toolbox
     toolbox.register("expr", gp.genHalfAndHalf, pset=pset,
-                     min_=1, max_=max_tree_height)
+                     min_=1, max_=max_subtree_height)
     toolbox.register("individual", tools.initIterate,
                      creator.Individual, toolbox.expr)
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
@@ -58,17 +58,22 @@ def config_population(toolbox, max_tree_height):
     return pset
 
 
-def config_algorithm(inputs, targets, toolbox, pset, max_subtree_mut_height):
+def config_algorithm(inputs, targets, toolbox, pset, max_tree_height, max_subtree_mut_height):
     toolbox.register("select", tools.selTournament, tournsize=3)
     toolbox.register("mate", gp.cxOnePoint)
     toolbox.register("expr_mut", gp.genFull, min_=0,
                      max_=max_subtree_mut_height)
     toolbox.register("mutate", gp.mutUniform, expr=toolbox.expr_mut, pset=pset)
 
+    limit_height = max_tree_height
     toolbox.decorate("mate", gp.staticLimit(
-        key=operator.attrgetter("height"), max_value=17))
+        key=operator.attrgetter("height"), max_value=limit_height))
     toolbox.decorate("mutate", gp.staticLimit(
-        key=operator.attrgetter("height"), max_value=17))
+        key=operator.attrgetter("height"), max_value=limit_height))
+
+    n_elem = 100
+    toolbox.decorate("mate", gp.staticLimit(key=len, max_value=n_elem))
+    toolbox.decorate("mutate", gp.staticLimit(key=len, max_value=n_elem))
 
     def eval_func(toolbox, individual):
         return eval_ind_simple(inputs, targets, toolbox, individual)
@@ -76,6 +81,8 @@ def config_algorithm(inputs, targets, toolbox, pset, max_subtree_mut_height):
     toolbox.register("evaluate", eval_func, toolbox)
 
 
-def config(inputs, targets, toolbox, max_tree_height=3, max_subtree_mut_height=2):
-    pset = config_population(toolbox, max_tree_height)
-    config_algorithm(inputs, targets, toolbox, pset, max_subtree_mut_height)
+def config(inputs, targets, toolbox,
+           max_tree_height=5, max_subtree_height=3,  max_subtree_mut_height=2):
+    pset = config_population(toolbox, max_subtree_height)
+    config_algorithm(inputs, targets, toolbox, pset,
+                     max_tree_height, max_subtree_mut_height)

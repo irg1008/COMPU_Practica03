@@ -2,25 +2,6 @@ from sklearn import metrics
 import random
 
 
-def eval_ind_confussion(inputs, targets, toolbox, individual):
-    func = toolbox.compile(expr=individual)
-
-    test = []
-    guesses = []
-
-    # Make the confusion matrix.
-    for input, target in zip(inputs, targets):
-        guess = func(*input)
-        type = target[0]
-
-        guesses.append(int(guess))
-        test.append(type)
-
-    f1_score = metrics.f1_score(test, guesses, average="weighted")
-
-    return f1_score,
-
-
 def eval_ind_simple(inputs, targets, toolbox, individual):
     func = toolbox.compile(expr=individual)
     guessed_equals_target = 0
@@ -64,3 +45,21 @@ def eval_ind_simple(inputs, targets, toolbox, individual):
 #     acc = (n - wrong_guesses) / n
 
 #     return acc,
+
+# def eval_ind_confussion(inputs, targets, toolbox, individual):
+#     func = toolbox.compile(expr=individual)
+
+#     test = []
+#     guesses = []
+
+#     # Make the confusion matrix.
+#     for input, target in zip(inputs, targets):
+#         guess = func(*input)
+#         type = target[0]
+
+#         guesses.append(int(guess))
+#         test.append(type)
+
+#     f1_score = metrics.f1_score(test, guesses, average="weighted")
+
+#     return f1_score,

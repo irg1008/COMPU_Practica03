@@ -29,3 +29,6 @@ def plot_conf_matrix(targets, guesses):
     plt.savefig(os.path.join(os.getcwd(), "../../output/conf_mat.png"))
 
     plt.show()
+    
+def plot_pareto():
+    pass
