@@ -32,9 +32,11 @@ def eval_ind_simple(inputs, targets, toolbox, individual):
 
         if guessed_target == target:
             guessed_equals_target += 1
-            
+                        
         if not min_limit <= guessed_target <= max_limit:
-            penalty += 10 # TODO: Change depending on distance to limit.
+            # Get distance outside interval between min and max.
+            distance = abs(guessed_target - min_limit) + abs(guessed_target - max_limit)
+            penalty += distance
 
     return guessed_equals_target/len(inputs), penalty
 
