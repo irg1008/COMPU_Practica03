@@ -1,3 +1,6 @@
+### INSTALL:
+- Install pygraphviz on linux machine, WSL, docker or similar
+
 Al tener solo dos clases, el algoritmo usa pocos datos de entrada.
 Encuentra un dato que permite diferenciar entre ventana y no ventana y lo usa de forma exclusiva en la función.
 
@@ -34,7 +37,7 @@ Used sklearn for the f_1 score. This allows us to create multi-class confussion 
 
 [Paper](https://link.springer.com/chapter/10.1007/978-3-662-44303-3_5)
 [Classification techniques](https://www.sciencedirect.com/topics/computer-science/classification-technique)
-
+[Glass Composition](https://www.britannica.com/technology/glass)
 [Binary method](https://ieeexplore.ieee.org/document/6597232)
 
 Requirements:

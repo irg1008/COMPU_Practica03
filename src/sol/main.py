@@ -4,7 +4,7 @@ from Test import test_data
 from deap import base
 
 
-def main(use_binary=False, CXPB=0.7, MUTPB=0.2, NGEN=100, NIND=400, plot_stats=True,
+def main(use_binary=False, CXPB=0.5, MUTPB=0.2, NGEN=500, NIND=150, plot_stats=True,
          plot_tree=True, debug=True, debug_iter=False, plot_matrix=True):
     toolbox = base.Toolbox()
 
