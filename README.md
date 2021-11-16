@@ -148,6 +148,7 @@ Por último la matriz de confusión es la siguiente:
 #### Clasificación multiclase
 
 Con los mismos parámetros de ejecución, el fitness por generación es el siguiente:
+
 ![Fitness en multiclase](https://i.imgur.com/LVzsWxQ.png)
 
 - El mejor fitness es 0,5492 (54,92% de acierto)
