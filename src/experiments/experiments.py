@@ -41,8 +41,7 @@ def create_experiments():
 def test_experiemnts(experiments):
     for name, value in experiments:
         MTH, MSH, MMSH, CXPB, MUTPB = value
-        str_value = "_".join(str(v) for v in value)
-        exp_name = f"{name}_{str_value}"
+        exp_name = f"{name}_MTH-{MTH}_MSH-{MSH}_MMSH-{MMSH}_CXPB-{CXPB}_MUTPB-{MUTPB}"
         
         execute(CXPB=CXPB, MUTPB=MUTPB,
                 use_binary=True, exp_name=exp_name,
