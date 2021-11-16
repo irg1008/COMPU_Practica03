@@ -44,7 +44,7 @@ def test_experiemnts(experiments):
         exp_name = f"{name}_MTH-{MTH}_MSH-{MSH}_MMSH-{MMSH}_CXPB-{CXPB}_MUTPB-{MUTPB}"
         
         execute(CXPB=CXPB, MUTPB=MUTPB, NGEN=200, NIND=200,
-                use_binary=True, exp_name=exp_name,
+                use_binary=False, exp_name=exp_name,
                 max_tree_height=MTH, max_subtree_height=MSH, max_mutated_subtree_height=MMSH)
         
 
