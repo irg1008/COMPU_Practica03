@@ -71,7 +71,7 @@ def config_algorithm(inputs, targets, toolbox, pset, max_tree_height, max_subtre
     toolbox.decorate("mutate", gp.staticLimit(
         key=operator.attrgetter("height"), max_value=limit_height))
 
-    n_elem = 200
+    n_elem = 50
     toolbox.decorate("mate", gp.staticLimit(key=len, max_value=n_elem))
     toolbox.decorate("mutate", gp.staticLimit(key=len, max_value=n_elem))
 
