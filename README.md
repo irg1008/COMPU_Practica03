@@ -107,9 +107,11 @@ El problema que encontramos esque al hacer esto, es que convergemos mucho más r
 Esto es muy posible porque en la composición de los cristales, el papel que diferencia entre un tipo u otro es principalmente un material en concreto. En el caso de ventana o no ventana, el papel diferenciador lo tiene el Bario (Ba).
 
 Podemos ver una matriz de confusión sin penalización a continuación:
+
 ![Sin usar penalización, observamos valores fuera del rango de las clases](https://github.com/irg1008/COMPU_Practica03/blob/ebec6080f3728ee63ecfdbdf76a829e4e70b0998/output/conf_mat.png?raw=true)
 
 Y otra con penalización:
+
 ![Uso de penalización para evitar etiquetas "out of bounds"](https://github.com/irg1008/COMPU_Practica03/blob/6bdd291e88ce4e0425c4e9820789e5f9c480bdc1/output/conf_mat.png?raw=true)
 
 ### MEJOR FITNESS EN LAS CLASIFICACIONES
