@@ -8,9 +8,9 @@ from Stats import config_stats, plot_fitness_penalty
 from Output import save_generated_tree, plot_conf_matrix, print_metrics_report
 
 
-def main(CXPB=0.5, MUTPB=0.2, NGEN=50, NIND=500, use_binary=True,
+def main(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
          save_tree=True, plot_stats=True, plot_matrix=True, debug=True,
-         max_tree_height=5, max_subtree_height=3, max_mutated_subtree_height=2):
+         max_tree_height=10, max_subtree_height=3, max_mutated_subtree_height=2):
 
     # Create toolbox.
     # -----------------------------

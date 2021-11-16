@@ -23,11 +23,11 @@ def config_individual():
     pset.addPrimitive(operator.sub, 2)
     pset.addPrimitive(operator.mul, 2)
     pset.addPrimitive(operator.neg, 1)
-    pset.addPrimitive(protDiv, 2)
     # pset.addPrimitive(operator.abs, 1)
+    pset.addPrimitive(protDiv, 2)
     # pset.addPrimitive(protSqrt, 1)
-    # pset.addPrimitive(math.cos, 1)
-    # pset.addPrimitive(math.sin, 1)
+    pset.addPrimitive(math.cos, 1)
+    pset.addPrimitive(math.sin, 1)
 
     # pset.addEphemeralConstant("rand101", lambda: random.randint(0, 10))
 
