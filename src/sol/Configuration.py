@@ -68,12 +68,12 @@ def config_algorithm(inputs, targets, toolbox, pset, max_tree_height, max_subtre
     toolbox.decorate("mutate", gp.staticLimit(
         key=operator.attrgetter("height"), max_value=limit_height))
 
-    n_elem = 200
+    n_elem = 100
     toolbox.decorate("mate", gp.staticLimit(key=len, max_value=n_elem))
     toolbox.decorate("mutate", gp.staticLimit(key=len, max_value=n_elem))
 
     def eval_func(toolbox, individual):
-        return eval_ind_simple(inputs, targets, toolbox, individual)
+        return eval_ind_paper(inputs, targets, toolbox, individual)
 
     toolbox.register("evaluate", eval_func, toolbox)
 
