@@ -13,6 +13,7 @@ def get_parsed_label(label):
     label_dict = {
         "protDiv": "/",
         "protSqrt": "√",
+        "protMod": "%",
         "mul": "*",
         "sub": "-",
         "add": "+",

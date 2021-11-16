@@ -11,6 +11,10 @@ def protDiv(left, right):
 def protSqrt(x):
     return math.sqrt(abs(x))
 
+def protMod(left, right):
+    return 1 if right == 0 else left % right
+
+
 def config_individual():
     # Create primitive set
     pset = gp.PrimitiveSet("MAIN", 9)
@@ -25,6 +29,7 @@ def config_individual():
     pset.addPrimitive(operator.neg, 1)
     # pset.addPrimitive(operator.abs, 1)
     pset.addPrimitive(protDiv, 2)
+    pset.addPrimitive(protMod, 2)
     # pset.addPrimitive(protSqrt, 1)
     pset.addPrimitive(math.cos, 1)
     pset.addPrimitive(math.sin, 1)
