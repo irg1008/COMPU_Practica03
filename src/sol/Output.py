@@ -6,6 +6,9 @@ from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn import metrics
 import matplotlib.pyplot as plt
 
+def dec_print(text):
+    print(f"----> {text}")
+
 def get_parsed_label(label):
     label_dict = {
         "protDiv": "/",
@@ -28,7 +31,7 @@ def save_generated_tree(individual, exp_name):
     g.add_edges_from(edges)
     g.layout(prog="dot")
     
-    g.node_attr.update(color="lightblue2", style="filled")
+    g.node_attr.update(color="lightgray", style="filled")
     
     for i in nodes:
         n = g.get_node(i)
@@ -54,7 +57,7 @@ def save_plot(file_name, title):
 
     plt.savefig(f"{folder}/{title}.png")
         
-def print_metrics_report(targets, guesses):
+def get_metrics_report(targets, guesses):
     report = metrics.classification_report(targets, guesses, zero_division=1)
-    print(report)
+    return report
     
