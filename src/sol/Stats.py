@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from deap import tools
 import numpy as np
 import os
+from Output import save_plot
 
 
 def col(a, *n_cols):
@@ -44,7 +45,8 @@ def plot_ax(ax, x_label, y_label, _x, y, labels, colors):
     get_nice_legend(ax)
 
 
-def plot_fitness_penalty(log, title="Fitness over generations"):
+def plot_fitness_penalty(log, exp_name):
+    title="Fitness over generations"
     fit_label = "Fitness"
     x_label = "Generations"
 
@@ -69,5 +71,4 @@ def plot_fitness_penalty(log, title="Fitness over generations"):
             [avg_label, max_label, min_label],
             colors)
 
-    plt.savefig(os.path.join(os.getcwd(), "../../output/stats.png"))
-    plt.show()
+    save_plot(exp_name, "stats")

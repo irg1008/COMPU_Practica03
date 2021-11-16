@@ -3,3 +3,4 @@ sklearn
 matplotlib
 deap
 pygraphviz
+typing

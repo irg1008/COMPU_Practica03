@@ -8,8 +8,8 @@ from Stats import config_stats, plot_fitness_penalty
 from Output import save_generated_tree, plot_conf_matrix, print_metrics_report
 
 
-def main(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
-         save_tree=True, plot_stats=True, plot_matrix=True, debug=True,
+def execute(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
+         save_tree=True, plot_stats=True, plot_matrix=True, debug=True, exp_name="Base",
          max_tree_height=10, max_subtree_height=3, max_mutated_subtree_height=2):
 
     # Create toolbox.
@@ -43,10 +43,10 @@ def main(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
             f"Best individual is {best} with fitness {fitness}")
         
     if plot_stats:
-        plot_fitness_penalty(logbook)
+        plot_fitness_penalty(logbook, exp_name)
 
     if save_tree:
-        save_generated_tree(best)
+        save_generated_tree(best, exp_name)
 
     # Test the input data.
     # -----------------------------
@@ -57,12 +57,14 @@ def main(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
         print(f"The correctly guessed percentage is {n_correct/len(inputs)}")
 
     if plot_matrix:
-        plot_conf_matrix(targets, guesses)
+        plot_conf_matrix(targets, guesses, exp_name)
 
     print_metrics_report(targets, guesses)
 
     return best
 
+def main():
+    execute()
 
 if __name__ == "__main__":
     main()

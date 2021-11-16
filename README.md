@@ -23,6 +23,7 @@ Requirements:
 - matplotlib (plotting)
 - deap
 - pygraphviz (generating trees)
+- typing
 
 3. Execute main or experiments:
 
@@ -45,20 +46,17 @@ El algoritmo detecta esto y usa este factor para calcular si es ventaan o no ven
 Para obtener una función que use todos los parámetros deberíamos tener más tipos a clasificar.
 En nuestro caso los tipos pueden ser los siguientes:
 
-Type of glass:
-
-- 1 buildingwindowsfloatprocessed
-- 2 buildingwindowsnonfloatprocessed
-- 3 vehiclewindowsfloatprocessed
-- 4 vehiclewindowsnonfloatprocessed (none in this database)
-- 5 containers
-- 6 tableware
-- 7 headlamps
-
-Tipos binarios:
-
-- Ventana
-- No ventana
+- 163 Window glass (building windows and vehicle windows)
+  - 87 float processed  
+    - 70 building windows
+    - 17 vehicle windows
+  - 76 non-float processed
+    - 76 building windows
+    - 0 vehicle windows
+- 51 Non-window glass
+  - 13 containers
+  - 9 tableware
+  - 29 headlamps
 
 ### PORQUE NO HEMOS USADO MULTIOBJETIVO. LO HEMOS PROBADO CON NUMEROSOS ESCENARIOS
 
@@ -147,6 +145,14 @@ Por último la matriz de confusión es la siguiente:
 
 ![Matriz de confusión binaria](https://i.imgur.com/N3fRKKi.png)
 
+La fracción de etiquetas es:
+
+| Etiqueta   | Número de datos |
+|------------|-----------------|
+| Ventana    | 163             |
+| No ventana | 51              |
+| __Total__  | __214__         |
+
 #### Clasificación multiclase
 
 Con los mismos parámetros de ejecución, el fitness por generación es el siguiente:
@@ -155,19 +161,20 @@ Con los mismos parámetros de ejecución, el fitness por generación es el sigui
 
 - El mejor fitness es 0,5492 (54,92% de acierto)
 
-Podemos observar que el fitness es mucho menor, esto es porque el algoritmo genético no es el mejor para clasificación de varias etiquetas, aun menos cuando solo tenemos 215 filas de datos en el dataset, siendo la mayoría de los datos para dos etiquetas (1 y 2) (podemos ver esto reflejado en la matriz de confusión más abajo).
+Podemos observar que el fitness es mucho menor, esto es porque el algoritmo genético no es el mejor para clasificación de varias etiquetas, aun menos cuando solo tenemos 214 filas de datos en el dataset, siendo la mayoría de los datos para dos etiquetas (1 y 2) (podemos ver esto reflejado en la matriz de confusión más abajo).
 
 Más concretamente la fracción de etiquetas es:
+
 | Etiqueta   | Número de datos |
 |------------|-----------------|
-| Etiqueta 1 | 71              |
+| Etiqueta 1 | 70              |
 | Etiqueta 2 | 76              |
 | Etiqueta 3 | 17              |
 | Etiqueta 4 | 0               |
 | Etiqueta 5 | 13              |
 | Etiqueta 6 | 9               |
 | Etiqueta 7 | 29              |
-| __Total__  | __215__         |
+| __Total__  | __214__         |
 
 Con el correspondiente árbol:
 

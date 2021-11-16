@@ -20,7 +20,7 @@ def get_parsed_label(label):
     
     return label
 
-def save_generated_tree(individual):
+def save_generated_tree(individual, exp_name):
     nodes, edges, labels = gp.graph(individual)
 
     g = pgv.AGraph()
@@ -35,28 +35,24 @@ def save_generated_tree(individual):
         l = get_parsed_label(labels[i])
         n.attr["label"] = l
 
-    output_path = "../../output/tree.png"
+    output_path = f"../../output/{exp_name}/tree.png"
 
     g.draw(os.path.join(os.getcwd(), output_path))
     
-def plot_conf_matrix(targets, guesses):
+def plot_conf_matrix(targets, guesses, exp_name):
     cm = metrics.confusion_matrix(targets, guesses)
     ConfusionMatrixDisplay(cm).plot()
 
-    plt.savefig(os.path.join(os.getcwd(), "../../output/conf_mat.png"))
-    plt.show()
+    save_plot(exp_name, "conf_matrix")
 
-def show_or_save(plot, file_name, title):
-    if not plot and file_name is not None:
-        folder = f"../../Plots/{file_name}"
+def save_plot(file_name, title):
+    folder = f"../../Output/{file_name}"
 
-        exists = os.path.exists(folder)
-        if not exists:
-            os.mkdir(folder)
+    exists = os.path.exists(folder)
+    if not exists:
+        os.mkdir(folder)
 
-        plt.savefig(f"{folder}/{title}.png")
-    else:
-        plt.show()
+    plt.savefig(f"{folder}/{title}.png")
         
 def print_metrics_report(targets, guesses):
     report = metrics.classification_report(targets, guesses, zero_division=1)
