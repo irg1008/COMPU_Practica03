@@ -1,4 +1,4 @@
-### INSTALL:
+### INSTALL
 
 ---
 
@@ -30,7 +30,7 @@ Requirements:
 python main.py
 ```
 
-### ABSTRACT:
+### ABSTRACT
 
 ---
 
@@ -60,7 +60,7 @@ Tipos binarios:
 - Ventana
 - No ventana
 
-### PORQUE NO HEMOS USADO MULTIOBJETIVO. LO HEMOS PROBADO CON NUMEROSOS ESCENARIOS.
+### PORQUE NO HEMOS USADO MULTIOBJETIVO. LO HEMOS PROBADO CON NUMEROSOS ESCENARIOS
 
 ---
 
@@ -78,11 +78,11 @@ En la imagen podemos observar dos gráficas, una con el fitness y otra con el pe
 Cuando el f-score aumenta, las eiquetas son más precisas, por lo que el hamming loss es menor.
 Hemos llegado a la conclusión de que todos los valores que usemos como penalización no aportan información para conseguir una mejor adaptación.
 
-### MATRIZ DE CONFUSION.
+### MATRIZ DE CONFUSION
 
 ---
 
-#### Variación de las etiquetas. Consideraciones y posible solución:
+#### Variación de las etiquetas. Consideraciones y posible solución
 
 Para solucionar la clasifiación fuera de los límites de la matriz, podemos usar una penalización por distancia. La distancia se calcula entre el valor predicho y el límite de clasifiación.
 
@@ -108,7 +108,7 @@ Podemos ver una matriz de confusión sin penalización a continuación:
 Y otra con penalización:
 ![Uso de penalización para evitar etiquetas "out of bounds"](https://github.com/irg1008/COMPU_Practica03/blob/6bdd291e88ce4e0425c4e9820789e5f9c480bdc1/output/conf_mat.png?raw=true)
 
-### POSIBLES MEJORAS:
+### POSIBLES MEJORAS
 
 ---
 
@@ -124,7 +124,7 @@ Y otra con penalización:
 
 Used sklearn for the f_1 score. This allows us to create multi-class confussion matrix and extract the average f-score
 
-## BIBLIOGRAFÍA:
+## BIBLIOGRAFÍA
 
 ---
 
