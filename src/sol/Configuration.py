@@ -40,7 +40,7 @@ def config_individual():
 def config_population(toolbox, max_subtree_height):
     # Create fitness and individual.
     if not hasattr(creator, "FitnessMax"):
-        creator.create("FitnessMax", base.Fitness, weights=(1.0, -1.0))
+        creator.create("FitnessMax", base.Fitness, weights=(1.0,))
     if not hasattr(creator, "Individual"):
         creator.create("Individual", gp.PrimitiveTree,
                        fitness=creator.FitnessMax)
@@ -71,7 +71,7 @@ def config_algorithm(inputs, targets, toolbox, pset, max_tree_height, max_subtre
     toolbox.decorate("mutate", gp.staticLimit(
         key=operator.attrgetter("height"), max_value=limit_height))
 
-    n_elem = 100
+    n_elem = 200
     toolbox.decorate("mate", gp.staticLimit(key=len, max_value=n_elem))
     toolbox.decorate("mutate", gp.staticLimit(key=len, max_value=n_elem))
 

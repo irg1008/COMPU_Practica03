@@ -14,12 +14,11 @@ def col(a, *n_cols):
 
 def config_stats():
     stats = tools.Statistics(lambda ind: ind.fitness.values)
-    stats.register("min", np.min, axis=0)
-    stats.register("max", np.max, axis=0)
-    stats.register("std", np.std, axis=0)
-    stats.register("avg", np.average, axis=0)
+    stats.register("min", np.min)
+    stats.register("max", np.max)
+    stats.register("std", np.std)
+    stats.register("avg", np.average)
     return stats
-
 
 def get_nice_legend(ax):
     legend = ax.legend(loc="best", shadow=True, edgecolor="black",
@@ -44,9 +43,12 @@ def plot_ax(ax, x_label, y_label, _x, y, labels, colors):
     get_nice_legend(ax)
 
 
+<<<<<<< HEAD
 def plot_fitness_penalty(log, nexp="", param="", fitness = "", title="Fitness and Penalty"):
+=======
+def plot_fitness_penalty(log, title="Fitness over generations"):
+>>>>>>> 0b27fe1e991696c8905826fbcff6986480a92737
     fit_label = "Fitness"
-    pen_label = "Penalty"
     x_label = "Generations"
 
     avg_label = "Average"
@@ -61,14 +63,11 @@ def plot_fitness_penalty(log, nexp="", param="", fitness = "", title="Fitness an
     mins = log.select("min")
     maxs = log.select("max")
 
-    fit_avgs, pen_avgs = col(avgs, 0, 1)
-    fit_maxs, pen_maxs = col(maxs, 0, 1)
-    fit_mins, pen_mins = col(mins, 0, 1)
-
-    fig, ax = plt.subplots(2, figsize=size)
+    fig, ax = plt.subplots(1, figsize=size)
 
     fig.suptitle(title)
 
+<<<<<<< HEAD
     plot_ax(ax[0], x_label, fit_label, gen,
             [fit_avgs, fit_maxs, fit_mins],
             [avg_label, max_label, min_label],
@@ -77,6 +76,10 @@ def plot_fitness_penalty(log, nexp="", param="", fitness = "", title="Fitness an
 
     plot_ax(ax[1], x_label, pen_label, gen,
             [pen_avgs, pen_maxs, pen_mins],
+=======
+    plot_ax(ax, x_label, fit_label, gen,
+            [avgs, maxs, mins],
+>>>>>>> 0b27fe1e991696c8905826fbcff6986480a92737
             [avg_label, max_label, min_label],
             colors)
     

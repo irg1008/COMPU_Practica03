@@ -1,4 +1,4 @@
-### INSTALL:
+### INSTALL
 
 ---
 
@@ -30,7 +30,7 @@ Requirements:
 python main.py
 ```
 
-### ABSTRACT:
+### ABSTRACT
 
 ---
 
@@ -45,7 +45,7 @@ El algoritmo detecta esto y usa este factor para calcular si es ventaan o no ven
 Para obtener una función que use todos los parámetros deberíamos tener más tipos a clasificar.
 En nuestro caso los tipos pueden ser los siguientes:
 
-Type of glass: (class attribute)
+Type of glass:
 
 - 1 buildingwindowsfloatprocessed
 - 2 buildingwindowsnonfloatprocessed
@@ -55,10 +55,60 @@ Type of glass: (class attribute)
 - 6 tableware
 - 7 headlamps
 
-// TODO:
-- Guardar resultados
+Tipos binarios:
 
-### POSIBLES MEJORAS:
+- Ventana
+- No ventana
+
+### PORQUE NO HEMOS USADO MULTIOBJETIVO. LO HEMOS PROBADO CON NUMEROSOS ESCENARIOS
+
+---
+
+No usamos multiobjetivo porque los objetivos de clasifiación son claros: Consrguir acertar el máximo núimero de etiqyetas/clases.
+
+Otros objetivos son minimizar el número de fallos, o similares.
+Todos los objetivos dependen unos de otros por lo que los valores evolucionan de la misma manera, sin aportar información al algoritmo.
+
+Por ejemplo:
+
+![Fitness and penalty in multiclass](https://github.com/irg1008/COMPU_Practica03/blob/7c092416cc14659fc3813953fb0876cbe01459fc/output/stats.png?raw=true)
+
+En la imagen podemos observar dos gráficas, una con el fitness y otra con el penalty. El fitness se mide con el f-score y el penalty con el hamming loss (fracción de etiquetas mal clasificadas).
+
+Cuando el f-score aumenta, las eiquetas son más precisas, por lo que el hamming loss es menor.
+Hemos llegado a la conclusión de que todos los valores que usemos como penalización no aportan información para conseguir una mejor adaptación.
+
+### MATRIZ DE CONFUSION
+
+---
+
+#### Variación de las etiquetas. Consideraciones y posible solución
+
+Para solucionar la clasifiación fuera de los límites de la matriz, podemos usar una penalización por distancia. La distancia se calcula entre el valor predicho y el límite de clasifiación.
+
+- Para ello necesitamos saber los límites inferiores y superiores de las etiquetas.
+Estos no son más que 0 y 1 en la clasificación binaria y 1 y 7 en la clasificación multiclase.
+
+  $min = min(ytest)$ siendo y_test el vector de etiquetas reales.
+  $max = max(ytest)$
+
+- Tras tener los valores mínimos y máximos, podemos calcular la distancia entre el valor predicho y el intervalo [min, max].
+
+  $distancia = abs(ypred - min) + abs(ypred - max)$
+
+Si aplicamos una penalización por distancia, e intentamos disminuir la misma, el algoritmo eliminará etiquetas que se alejen de los valores válidos.
+
+El problema que encontramos esque al hacer esto, es que convergemos mucho más rápido. Lo cual no es necesariamente malo, pero si previene encontrar soluciones mejores en el espacio de búsqueda. Aquellas en las que algunos de los valores se alejen de los límites pero se genere mayor adoptación con el resto de valores.
+
+Esto es muy posible porque en la composición de los cristales, el papel que diferencia entre un tipo u otro es principalmente un material en concreto. En el caso de ventana o no ventana, el papel diferenciador lo tiene el Bario (Ba).
+
+Podemos ver una matriz de confusión sin penalización a continuación:
+![Sin usar penalización, observamos valores fuera del rango de las clases](https://github.com/irg1008/COMPU_Practica03/blob/ebec6080f3728ee63ecfdbdf76a829e4e70b0998/output/conf_mat.png?raw=true)
+
+Y otra con penalización:
+![Uso de penalización para evitar etiquetas "out of bounds"](https://github.com/irg1008/COMPU_Practica03/blob/6bdd291e88ce4e0425c4e9820789e5f9c480bdc1/output/conf_mat.png?raw=true)
+
+### POSIBLES MEJORAS
 
 ---
 
@@ -74,7 +124,7 @@ Type of glass: (class attribute)
 
 Used sklearn for the f_1 score. This allows us to create multi-class confussion matrix and extract the average f-score
 
-## BIBLIOGRAFÍA:
+## BIBLIOGRAFÍA
 
 ---
 
