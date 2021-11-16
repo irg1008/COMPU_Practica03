@@ -58,6 +58,17 @@ Type of glass: (class attribute)
 // TODO:
 - Guardar resultados
 
+
+### PORQUE NO HEMOS USADO MULTIOBJETIVO. LO HEMOS PROBADO CON NUMEROSOS ESCENARIOS.
+No usamos multiobjetivo porque los objetivos de clasifiación son claros: Consrguir acertar el máximo núimero de etiqyetas/clases.
+
+Otros objetivos son minimizar el número de fallos, o similares.
+Todos los objetivos dependen unos de otros por lo que los valores evolucionan de la misma manera, sin aportar información al algoritmo.
+
+Por ejemplo:
+
+![Fitness and penalty in multiclass](https://github.com/irg1008/COMPU_Practica03/blob/main/output/stats.png?raw=true)
+
 ### POSIBLES MEJORAS:
 
 ---
