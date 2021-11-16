@@ -45,8 +45,8 @@ def plot_ax(ax, x_label, y_label, _x, y, labels, colors):
     get_nice_legend(ax)
 
 
-def plot_fitness_penalty(log, exp_name):
-    title="Fitness over generations"
+def plot_fitness_penalty(log, fitness, exp_name):
+    title="Fitness over generations. Best fitness: {fitness}"
     fit_label = "Fitness"
     x_label = "Generations"
 

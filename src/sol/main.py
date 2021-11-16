@@ -40,13 +40,13 @@ def execute(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
 
     # Show stats, debug and tree.
     # -----------------------------
+    fitness = round(best.fitness.values[0], 4)
     if debug:
-        fitness = round(best.fitness.values[0], 4)
         log(
             f"Best individual is {best} with fitness {fitness}")
         
     if plot_stats:
-        plot_fitness_penalty(logbook, exp_name)
+        plot_fitness_penalty(logbook, fitness, exp_name)
 
     if save_tree:
         save_generated_tree(best, exp_name)
