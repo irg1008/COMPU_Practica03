@@ -2,7 +2,7 @@ from deap import creator, base, tools, gp
 import math
 import operator
 import random
-from Evaluation import eval_ind_simple
+from Evaluation import eval_ind_simple, eval_ind_paper
 
 
 def protDiv(left, right):
