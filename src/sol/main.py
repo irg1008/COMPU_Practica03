@@ -36,15 +36,17 @@ def main(CXPB=0.5, MUTPB=0.2, NGEN=500, NIND=200, use_binary=False,
 
     # Show stats, debug and tree.
     # -----------------------------
+    fitness = round(best.fitness.values[0], 4)
+
     if debug:
         print(
-            f"Best individual is {best} with fitness {best.fitness.values[0]}")
+            f"Best individual is {best} with fitness {fitness}")
 
     if plot_stats:
-        plot_fitness_penalty(logbook)
+        plot_fitness_penalty(logbook, nexp=nexp, param=param, fitness=fitness)
 
     if save_tree:
-        save_generated_tree(best)
+        save_generated_tree(best, nexp=nexp, param=param, fitness=fitness)
 
     # Test the input data (only needed in f_score fitness function).
     # -----------------------------
@@ -55,7 +57,10 @@ def main(CXPB=0.5, MUTPB=0.2, NGEN=500, NIND=200, use_binary=False,
         print(f"The correctly guessed percentage is {n_correct/len(inputs)}")
 
     if plot_matrix:
-        plot_conf_matrix(targets, guesses)
+        plot_conf_matrix(targets, guesses, nexp=nexp,
+                         param=param, fitness=fitness)
+
+    return fitness, best
 
 
 if __name__ == "__main__":

@@ -43,7 +43,11 @@ def plot_ax(ax, x_label, y_label, _x, y, labels, colors):
     get_nice_legend(ax)
 
 
+<<<<<<< HEAD
+def plot_fitness_penalty(log, nexp="", param="", fitness = "", title="Fitness and Penalty"):
+=======
 def plot_fitness_penalty(log, title="Fitness over generations"):
+>>>>>>> 0b27fe1e991696c8905826fbcff6986480a92737
     fit_label = "Fitness"
     x_label = "Generations"
 
@@ -63,10 +67,26 @@ def plot_fitness_penalty(log, title="Fitness over generations"):
 
     fig.suptitle(title)
 
-    plot_ax(ax, x_label, fit_label, gen,
-            [avgs, maxs, mins],
+<<<<<<< HEAD
+    plot_ax(ax[0], x_label, fit_label, gen,
+            [fit_avgs, fit_maxs, fit_mins],
             [avg_label, max_label, min_label],
             colors)
 
-    plt.savefig(os.path.join(os.getcwd(), "../../output/stats.png"))
+
+    plot_ax(ax[1], x_label, pen_label, gen,
+            [pen_avgs, pen_maxs, pen_mins],
+=======
+    plot_ax(ax, x_label, fit_label, gen,
+            [avgs, maxs, mins],
+>>>>>>> 0b27fe1e991696c8905826fbcff6986480a92737
+            [avg_label, max_label, min_label],
+            colors)
+    
+    if param != "":
+        param = "-" + str(param) + "-"
+    if fitness != "":
+        fitness = "_f" + str(fitness) + "-"
+    
+    plt.savefig(os.path.join(os.getcwd(), "../../output/" + nexp + param + "stats" + fitness + ".png"))
     plt.show()
