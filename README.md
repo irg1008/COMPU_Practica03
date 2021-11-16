@@ -67,7 +67,7 @@ Todos los objetivos dependen unos de otros por lo que los valores evolucionan de
 
 Por ejemplo:
 
-![Fitness and penalty in multiclass](https://github.com/irg1008/COMPU_Practica03/blob/main/output/stats.png?raw=true)
+![Fitness and penalty in multiclass](https://github.com/irg1008/COMPU_Practica03/blob/7c092416cc14659fc3813953fb0876cbe01459fc/output/stats.png?raw=true)
 
 ### POSIBLES MEJORAS:
 
