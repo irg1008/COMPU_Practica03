@@ -6,33 +6,30 @@ from Evaluation import eval_ind_simple
 
 
 def protDiv(left, right):
-    return 0 if right == 0 else left / right
-
+    return 1 if right == 0 else left / right
 
 def protSqrt(x):
     return math.sqrt(abs(x))
 
-
 def config_individual():
     # Create primitive set
     pset = gp.PrimitiveSet("MAIN", 9)
+    pset.renameArguments(ARG0="RI", ARG1="Na", ARG2="Mg",
+                         ARG3="Al", ARG4="Si", ARG5="K",
+                         ARG6="Ca", ARG7="Ba", ARG8="Fe")
 
     # Add all primitives to the primitive set
     pset.addPrimitive(operator.add, 2)
     pset.addPrimitive(operator.sub, 2)
     pset.addPrimitive(operator.mul, 2)
-    pset.addPrimitive(protDiv, 2)
     pset.addPrimitive(operator.neg, 1)
-    pset.addPrimitive(operator.abs, 1)
+    pset.addPrimitive(protDiv, 2)
+    # pset.addPrimitive(operator.abs, 1)
     # pset.addPrimitive(protSqrt, 1)
     # pset.addPrimitive(math.cos, 1)
     # pset.addPrimitive(math.sin, 1)
 
-    pset.renameArguments(ARG0="RI", ARG1="Na", ARG2="Mg",
-                         ARG3="Al", ARG4="Si", ARG5="K",
-                         ARG6="Ca", ARG7="Ba", ARG8="Fe")
-
-    # pset.addEphemeralConstant("rand101", lambda: random.uniform(0, 1))
+    # pset.addEphemeralConstant("rand101", lambda: random.randint(0, 10))
 
     return pset
 
@@ -71,7 +68,7 @@ def config_algorithm(inputs, targets, toolbox, pset, max_tree_height, max_subtre
     toolbox.decorate("mutate", gp.staticLimit(
         key=operator.attrgetter("height"), max_value=limit_height))
 
-    n_elem = 50
+    n_elem = 200
     toolbox.decorate("mate", gp.staticLimit(key=len, max_value=n_elem))
     toolbox.decorate("mutate", gp.staticLimit(key=len, max_value=n_elem))
 
