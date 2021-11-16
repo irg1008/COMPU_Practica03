@@ -66,8 +66,6 @@ def execute(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
         print(metrics)
 
 
-    ##############
-
     log(f"Executing time: {round(end-start, 2)} seconds.")
 
 def main():
