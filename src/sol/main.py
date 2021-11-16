@@ -38,33 +38,31 @@ def execute(CXPB=0.5, MUTPB=0.2, NGEN=30, NIND=200, use_binary=True,
     logbook, best = make_evolution(toolbox, stats, CXPB, MUTPB, NGEN, NIND)
     end = time() # End evolution time.
 
-    # Show stats, debug and tree.
-    # -----------------------------
-    fitness = round(best.fitness.values[0], 4)
-    if debug:
-        log(
-            f"Best individual is {best} with fitness {fitness}")
-        
-    if plot_stats:
-        plot_fitness_penalty(logbook, fitness, exp_name)
-
-    if save_tree:
-        save_generated_tree(best, exp_name)
-
     # Test the input data.
     # -----------------------------
     n_correct, guesses = test_data(inputs, targets, best, toolbox, plot_matrix)
-
+    correct_percentage = round(n_correct / len(inputs) * 100, 2)
+    
+    # Show stats, debug and tree.
+    # -----------------------------
+    fitness = round(best.fitness.values[0], 4)
+    
     if debug:
+        log(f"Best individual is {best} with fitness {fitness}")
         log(f"Number correct: {n_correct} out of {len(inputs)}")
-        log(f"The correctly guessed percentage is {n_correct/len(inputs)}")
+        log(f"The correctly guessed percentage is {correct_percentage}%")
+        
+    if plot_stats:
+        plot_fitness_penalty(logbook, exp_name, title=f"Fitness: {fitness}. N. Correct Guesses: {n_correct} ({correct_percentage}%)")
+
+    if save_tree:
+        save_generated_tree(best, exp_name)
 
     if plot_matrix:
         plot_conf_matrix(targets, guesses, exp_name)
         metrics = get_metrics_report(targets, guesses)
         log("Metrics for f_score and accuracy on all guessed labels:")
         print(metrics)
-
 
     log(f"Executing time: {round(end-start, 2)} seconds.")
     print("-----------------------------------------")
