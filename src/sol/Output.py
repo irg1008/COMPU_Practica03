@@ -6,7 +6,7 @@ from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn import metrics
 import matplotlib.pyplot as plt
 
-def dec_print(text):
+def log(text):
     print(f"----> {text}")
 
 def get_parsed_label(label):
