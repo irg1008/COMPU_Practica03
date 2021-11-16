@@ -22,7 +22,7 @@ Requirements:
 - sklearn (confussion matrix and other metrics)
 - matplotlib (plotting)
 - deap
-- pygraphviz (generating tress)
+- pygraphviz (generating trees)
 
 3. Execute main or experiments:
 
@@ -155,6 +155,18 @@ Con los mismos parámetros de ejecución, el fitness por generación es el sigui
 
 Podemos observar que el fitness es mucho menor, esto es porque el algoritmo genético no es el mejor para clasificación de varias etiquetas, aun menos cuando solo tenemos 215 filas de datos en el dataset, siendo la mayoría de los datos para dos etiquetas (1 y 2) (podemos ver esto reflejado en la matriz de confusión más abajo).
 
+Más concretamente la fracción de etiquetas es:
+| Etiqueta   | Número de datos |
+|------------|-----------------|
+| Etiqueta 1 | 71              |
+| Etiqueta 2 | 76              |
+| Etiqueta 3 | 17              |
+| Etiqueta 4 | 0               |
+| Etiqueta 5 | 13              |
+| Etiqueta 6 | 9               |
+| Etiqueta 7 | 29              |
+| __Total__  | __215__         |
+
 Con el correspondiente árbol:
 
 ![Árbol de clasificación multiclase](https://i.imgur.com/q47PEKI.png)
@@ -167,18 +179,19 @@ Por último, la matriz de confusión nos otorga una vista de porque la clasifica
 
 ![Matriz de multiclase](https://i.imgur.com/8BObo67.png)
 
-Más concretamente la fracción de etiquetas es:
-| Etiqueta   | Número de datos |
-|------------|-----------------|
-| Etiqueta 1 | 71              |
-| Etiqueta 2 | 76              |
-| Etiqueta 3 | 17              |
-| Etiqueta 4 | 0               |
-| Etiqueta 5 | 13              |
-| Etiqueta 6 | 9               |
-| Etiqueta 7 | 29              |
-| __Total__  | __215__         |
-          
+Podemos observar los datos de f_score de cada etiqueta aquí:
+Los datos para multiclase son:
+
+|            | f1-score |
+|------------|----------|
+| Etiqueta 1 | 0.72     |
+| Etiqueta 2 | 0.61     |
+| Etiqueta 3 | 0.09     |
+| Etiqueta 4 | 0.00     |
+| Etiqueta 5 | 0.00     |
+| Etiqueta 6 | 0.00     |
+| Etiqueta 7 | 0.07     |
+
 ### POSIBLES MEJORAS
 
 ---
